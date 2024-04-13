@@ -1,0 +1,9 @@
+net\sleepyspeller\extralectern\commands\CommandSetIndex.class
+net\sleepyspeller\extralectern\commands\CommandReloadConfig.class
+net\sleepyspeller\extralectern\ConfigManager.class
+net\sleepyspeller\extralectern\events\EventPlayerJoin.class
+net\sleepyspeller\extralectern\events\EventPlayerInteract.class
+net\sleepyspeller\extralectern\ExtraLectern.class
+net\sleepyspeller\extralectern\commands\CommandGetIndex.class
+net\sleepyspeller\extralectern\events\EventItemDrop.class
+net\sleepyspeller\extralectern\events\EventPlayerTakeBook.class

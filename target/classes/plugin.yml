@@ -1,0 +1,14 @@
+name: ExtraLectern
+version: '1.0'
+main: net.sleepyspeller.extralectern.ExtraLectern
+api-version: '1.20'
+commands:
+  reloadConfig:
+    description: Reload the config for ExtraLanterns
+    usage: /<command>
+  setIndex:
+    description: Only used for debugging
+    usage: /<command>
+  getIndex:
+    description: Also used only for debugging
+    usage: /<command>
