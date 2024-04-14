@@ -6,9 +6,3 @@ commands:
   reloadConfig:
     description: Reload the config for ExtraLanterns
     usage: /<command>
-  setIndex:
-    description: Only used for debugging
-    usage: /<command>
-  getIndex:
-    description: Also used only for debugging
-    usage: /<command>

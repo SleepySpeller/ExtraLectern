@@ -2,8 +2,6 @@ package net.sleepyspeller.extralectern.events;
 
 import net.sleepyspeller.extralectern.ExtraLectern;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
