@@ -6,3 +6,9 @@ commands:
   reloadConfig:
     description: Reload the config for ExtraLanterns
     usage: /<command>
+  resetProgress:
+    description: Reset someones progress on ExtraLectern
+    usage: /<command>
+  setFinalMessage:
+    description: Set the final message on ExtraLectern
+    usage: /<command>
