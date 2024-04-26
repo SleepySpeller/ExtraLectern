@@ -113,11 +113,14 @@ public class EventPlayerInteract implements Listener {
                     config.setLastClickStatus(event.getPlayer().getName(), true);
                     openBook(event);
                 } else {
-                    if(!config.getLastClickStatus(event.getPlayer().getName())){
-                        event.getPlayer().sendMessage("You need to find the next Lectern first! Use the compass to help!");
-                        event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
+                    if(config.getIndex(event.getPlayer().getName()) < config.getIndex(event.getClickedBlock().getLocation())){
+
+                        if(!config.getLastClickStatus(event.getPlayer().getName())){
+                            event.getPlayer().sendMessage("You need to find the next Lectern first! Use the compass to help!");
+                            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
+                        }
+                        event.setCancelled(true);
                     }
-                    event.setCancelled(true);
                 }
 
 

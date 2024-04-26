@@ -20,6 +20,8 @@ public class SetCompassDelay extends BukkitRunnable {
     @Override
     public void run() {
         player.setCompassTarget(location);
+
+        // Has the same issue as the compass, the client and the server wont register it unless i delay the sound effect.
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 1.0f);
     }
 

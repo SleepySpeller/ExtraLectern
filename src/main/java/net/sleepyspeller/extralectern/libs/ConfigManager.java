@@ -100,6 +100,23 @@ public class ConfigManager {
         }
     }
 
+    public int getIndex(Location clickedLocation){
+        ArrayList<String> locationsConfig = getLocations();
+        ArrayList<Location> locationList = new ArrayList<>();
+
+        int counter = 0;
+        for(String item : locationsConfig) {
+            String[] XYZ = item.split(" ");
+            Location currentLoc = new Location(Bukkit.getWorld("world"), Double.parseDouble(XYZ[0]), Double.parseDouble(XYZ[1]), Double.parseDouble(XYZ[2]));
+
+            if(clickedLocation.equals(currentLoc)){
+                return counter;
+            }
+            counter++;
+        }
+        return -1;
+    }
+
     public void setIndex(String username, int index) {
         indexConfig.set("playerIndex." + username, index);
         plugin.saveIndexConfig();
