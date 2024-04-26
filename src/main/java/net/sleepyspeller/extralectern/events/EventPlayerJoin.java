@@ -3,6 +3,7 @@ package net.sleepyspeller.extralectern.events;
 import net.sleepyspeller.extralectern.libs.ConfigManager;
 import net.sleepyspeller.extralectern.ExtraLectern;
 import net.sleepyspeller.extralectern.libs.SetCompassDelay;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +17,9 @@ public class EventPlayerJoin implements Listener {
 
     @EventHandler
     public void onPlayerLogin(PlayerJoinEvent event) {
+        event.getPlayer().sendMessage("Welcome to the server! Please read the book to get started!");
+        event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 1.0f);
+
         ConfigManager config = new ConfigManager(plugin);
         Player player = event.getPlayer();
 

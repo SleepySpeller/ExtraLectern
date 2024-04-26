@@ -2,6 +2,7 @@ package net.sleepyspeller.extralectern.libs;
 
 import net.sleepyspeller.extralectern.ExtraLectern;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -19,6 +20,7 @@ public class SetCompassDelay extends BukkitRunnable {
     @Override
     public void run() {
         player.setCompassTarget(location);
+        player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 1.0f, 1.0f);
     }
 
     public BukkitRunnable getTask(){
