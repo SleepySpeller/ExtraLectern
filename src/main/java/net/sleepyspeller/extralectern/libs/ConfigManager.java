@@ -75,12 +75,16 @@ public class ConfigManager {
         return locations;
     }
 
+    public boolean isLastLecternClicked(Location currentLoc) {
+        return getLocByIndex(getLocations().size()-1).equals(currentLoc);
+    }
+
     // Used to check if the player clicked on the last lectern
     // Basically avoiding OutOfBounds error
     public boolean isIndexLastLecternByUsername(String username) {
         ArrayList<String> locations = getLocations();
 
-        int listLenght = locations.size();
+        int listLenght = locations.size()-1;
         int currentIndex = getIndex(username);
 
         return currentIndex >= listLenght;

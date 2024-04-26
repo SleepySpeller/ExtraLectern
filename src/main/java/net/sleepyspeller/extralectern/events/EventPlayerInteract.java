@@ -69,6 +69,20 @@ public class EventPlayerInteract implements Listener {
             Material.DROPPER,
     };
 
+    public void openBook(PlayerInteractEvent event){
+        BlockState state = event.getClickedBlock().getState();
+        if (state instanceof Lectern) {
+            Lectern lectern = (Lectern) state;
+            ItemStack book = lectern.getInventory().getItem(0);
+
+            if (book != null && book.getType() == Material.WRITTEN_BOOK) {
+                event.getPlayer().openBook(book);
+                event.setCancelled(true);
+            }
+        }
+    }
+
+
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         if(event.getClickedBlock() instanceof ItemFrame && !event.getPlayer().isOp()) {
@@ -89,27 +103,23 @@ public class EventPlayerInteract implements Listener {
                    }
 
                     config.increaseIndex(event.getPlayer().getName());
-                }
 
-                if(config.isIndexLastLecternByUsername(event.getPlayer().getName()) && !config.getLastClickStatus(event.getPlayer().getName())) {
+                   openBook(event);
+                } else if(config.isIndexLastLecternByUsername(event.getPlayer().getName()) && !config.getLastClickStatus(event.getPlayer().getName()) && config.isLastLecternClicked(event.getClickedBlock().getLocation())) {
                     event.getPlayer().sendMessage(config.getFinalMessage());
                     event.getPlayer().getInventory().remove(Material.COMPASS);
                     event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
                     config.setLastClickStatus(event.getPlayer().getName(), true);
-                }
-
-
-                BlockState state = event.getClickedBlock().getState();
-                if (state instanceof Lectern) {
-                    Lectern lectern = (Lectern) state;
-                    ItemStack book = lectern.getInventory().getItem(0);
-
-                    if (book != null && book.getType() == Material.WRITTEN_BOOK) {
-                        event.getPlayer().openBook(book);
-                        event.setCancelled(true);
+                    openBook(event);
+                } else {
+                    if(!config.getLastClickStatus(event.getPlayer().getName())){
+                        event.getPlayer().sendMessage("You need to find the next Lectern first! Use the compass to help!");
+                        event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_YES, 1.0f, 1.0f);
                     }
+                    event.setCancelled(true);
                 }
+
 
             } else  if(!event.getPlayer().isOp()){
 
